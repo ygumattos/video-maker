@@ -11,7 +11,7 @@ Projeto open source para fazer vídeos automatizados
 - Para essa API utilizaremos para consultar e extrair conteúdos do Wikipedia.
 - https://algorithmia.com/
 
-## SDB - Sentence Boundary Detection
+## SBD - Sentence Boundary Detection
 - Uma lib especializada em quebrar textos em sentenças, respeitando virgulas, pontos e siglas.
 
 # Environments
