@@ -1,12 +1,13 @@
 const algorithmia = require('algorithmia');
-const algorithmiaApiKey = require('../credentials/algorithmia.json').apiKey;
 const sentenceBoundaryDetection = require('sbd')
-
 const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1')
 const { IamAuthenticator } = require('ibm-watson/auth')
+
+const algorithmiaApiKey = require('../credentials/algorithmia.json').apiKey;
 const {
     apikey: watsonApiKey,
 } = require('../credentials/watson-nlu.json')
+const state = require('./states')
 
 const nlu = new NaturalLanguageUnderstandingV1({
     authenticator: new IamAuthenticator({ apikey: watsonApiKey }),
@@ -14,12 +15,16 @@ const nlu = new NaturalLanguageUnderstandingV1({
     serviceUrl: 'https://api.us-south.natural-language-understanding.watson.cloud.ibm.com'
 });
 
-async function robot(content) {
+async function robot() {
+    const content = state.load()
+
     await featchContentFromWikipedia(content)
     sanitizeContent(content)
     breakContentIntoSentences(content)
     limitMaximumSentence(content)
     await fetchKeywordsOfAllSentences(content)
+
+    state.save(content)
 
     async function featchContentFromWikipedia(content) {
         // APIKEY da conta que retorna uma instancia autenticiada do algorithmia 
