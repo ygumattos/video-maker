@@ -110,5 +110,5 @@ credentials/*.json
 send-pull-requests.md
 
 # Content
-
+*/content
 content.json
