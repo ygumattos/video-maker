@@ -21,6 +21,9 @@ Projeto open source para fazer vídeos automatizados
 - Navigator test: https://natural-language-understanding-demo.ng.bluemix.net/ 
 - Create account: https://cloud.ibm.com/registration
 
+## Google Cloud Plataform
+### Custom Search API
+
 # Environments
 
 ## Credentials format
